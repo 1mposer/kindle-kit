@@ -1,0 +1,50 @@
+# shelf | source | id | filename
+# source: se = standardebooks.org slug, pg = Project Gutenberg id, url = direct EPUB link
+# A cover in assets/covers/<pg id>.* replaces Gutenberg's generic one.
+
+Philosophy & Strategy|se|marcus-aurelius/meditations/george-long|
+Philosophy & Strategy|se|seneca/dialogues/aubrey-stewart|
+Philosophy & Strategy|se|epictetus/short-works/george-long|
+Philosophy & Strategy|se|friedrich-nietzsche/beyond-good-and-evil/helen-zimmern|
+Philosophy & Strategy|se|niccolo-machiavelli/the-prince/w-k-marriott|
+Philosophy & Strategy|se|sun-tzu/the-art-of-war/lionel-giles|
+Philosophy & Strategy|se|ralph-waldo-emerson/essays|
+Philosophy & Strategy|se|henry-david-thoreau/walden|
+
+Biographies & Achievers|se|benjamin-franklin/the-autobiography-of-benjamin-franklin|
+Biographies & Achievers|se|ulysses-s-grant/personal-memoirs-of-ulysses-s-grant|
+Biographies & Achievers|se|frederick-douglass/narrative-of-the-life-of-frederick-douglass|
+Biographies & Achievers|se|booker-t-washington/up-from-slavery|
+Biographies & Achievers|se|helen-keller/the-story-of-my-life|
+Biographies & Achievers|pg|17976|andrew-carnegie_autobiography.epub
+Biographies & Achievers|pg|7213|henry-ford_my-life-and-work.epub
+Biographies & Achievers|pg|4028|benvenuto-cellini_autobiography.epub
+Biographies & Achievers|pg|2010|charles-darwin_autobiography.epub
+Biographies & Achievers|pg|674|plutarch_lives.epub
+Biographies & Achievers|pg|5768|sam-williams_free-as-in-freedom.epub
+
+Focus & Self-Mastery|pg|935|samuel-smiles_self-help.epub
+Focus & Self-Mastery|pg|2274|arnold-bennett_how-to-live-on-24-hours-a-day.epub
+Focus & Self-Mastery|pg|4507|james-allen_as-a-man-thinketh.epub
+
+Software & Coding|url|https://media.githubusercontent.com/media/sarabander/sicp-epub/master/sicp.epub|abelson-sussman_sicp.epub
+Software & Coding|url|https://github.com/progit/progit2/releases/latest/download/progit.epub|scott-chacon_pro-git.epub
+Software & Coding|url|https://eloquentjavascript.net/Eloquent_JavaScript.epub|marijn-haverbeke_eloquent-javascript.epub
+Software & Coding|pg|101|bruce-sterling_the-hacker-crackdown.epub
+
+Classic Fiction|se|fyodor-dostoevsky/the-brothers-karamazov/constance-garnett|
+Classic Fiction|se|fyodor-dostoevsky/crime-and-punishment/constance-garnett|
+Classic Fiction|se|fyodor-dostoevsky/notes-from-underground/constance-garnett|
+Classic Fiction|se|leo-tolstoy/war-and-peace/louise-maude_aylmer-maude|
+Classic Fiction|se|leo-tolstoy/short-fiction/various-translators|
+Classic Fiction|pg|5200|franz-kafka_the-metamorphosis.epub
+Classic Fiction|se|homer/the-odyssey/william-cullen-bryant|
+Classic Fiction|se|alexandre-dumas/the-count-of-monte-cristo/chapman-and-hall|
+Classic Fiction|se|f-scott-fitzgerald/the-great-gatsby|
+Classic Fiction|se|arthur-conan-doyle/the-return-of-sherlock-holmes|
+Classic Fiction|se|h-g-wells/the-time-machine|
+Classic Fiction|se|mary-shelley/frankenstein|
+Classic Fiction|se|herman-melville/moby-dick|
+
+Science & Economics|se|charles-darwin/the-origin-of-species|
+Science & Economics|se|adam-smith/the-wealth-of-nations|
