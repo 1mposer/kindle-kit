@@ -44,7 +44,7 @@ It works out which stage your Kindle is at.
 | Stage | On your computer | On the Kindle |
 |---|---|---|
 | **1. Prep** | Copies the SpiderCat jailbreak book, fills storage to block updates | Open the book, wait for reboot, `;kpm install koreader` |
-| **2. Setup** | Removes filler and pending updates, installs everything below | Enable the plugin, pick the sleep screen folder |
+| **2. Setup** | Removes filler and pending updates, installs everything below | Open KOReader (or tap through the steps below) |
 
 **Installed in stage 2**
 
@@ -52,6 +52,8 @@ It works out which stage your Kindle is at.
 - **Webster's 1913** - 160,000-word unabridged dictionary, long-press any word
 - **12 sleep screens** - Durer, Dore, Hiroshige, Haeckel and more, e-ink ready
 - **41 free books** on six shelves, with proper covers
+- **Reading setup** (optional) - Literata font, library as home screen, sleep screens on, chapter-only e-ink flashes
+- **Book inbox** (optional) - type a title on your phone, the free EPUB lands on the Kindle ([kindle-inbox](https://github.com/1mposer/kindle-inbox))
 
 ```
 documents/Library/
@@ -76,6 +78,9 @@ official source. Edit [`books.txt`](books.txt) to change the list.
 Newer MTP-only models (Kindle 2024, Paperwhite 6, Scribe) are not supported.
 
 ## After setup
+
+With the reading setup, KOReader opens on your Library and there is nothing
+to tap. Without it:
 
 ```
 Library view   wrench > More tools > Plugin management > Project: Title

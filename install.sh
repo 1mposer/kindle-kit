@@ -16,6 +16,7 @@ ok()   { printf '  [ok] %s\n' "$*"; }
 warn() { printf '  [!]  %s\n' "$*"; }
 die()  { printf '\n  [x]  %s\n\n' "$*"; exit 1; }
 ask()  { local a; read -r -p "  $1 [y/N] " a </dev/tty; [[ "$a" =~ ^[yY] ]]; }
+ask_yes() { local a; read -r -p "  $1 [Y/n] " a </dev/tty; [[ ! "$a" =~ ^[nN] ]]; }
 step() { printf '\n'; bold "== $* =="; }
 
 fetch() { curl -fsSL -A "$UA" --retry 2 -o "$2" "$1"; }
@@ -218,9 +219,65 @@ while IFS='|' read -r shelf src id name; do
 done < "$SRC/books.txt"
 printf '\n'; ok "$added added, $skipped already there, $failed failed"
 
+# --- reading setup (optional): Literata, Project: Title as home, quiet status bar
+step "Reading setup"
+SETUP=0
+info "Literata font, library as home screen, Project: Title on, sleep screens on,"
+info "chapter-only e-ink flashes, quieter status bar. Applied once on next start."
+if ask_yes "Apply the recommended setup?"; then
+    LIT="$K/koreader/fonts/literata"
+    mkdir -p "$LIT"
+    for f in Regular Italic Medium MediumItalic Bold BoldItalic; do
+        [ -s "$LIT/Literata-$f.ttf" ] ||
+            fetch "https://raw.githubusercontent.com/googlefonts/literata/main/fonts/ttf/Literata-$f.ttf" "$LIT/Literata-$f.ttf"
+    done
+    fetch "https://raw.githubusercontent.com/googlefonts/literata/main/OFL.txt" "$LIT/OFL.txt"
+    ok "Literata installed (SIL Open Font License)"
+    PT="$K/koreader/plugins/projecttitle.koplugin"
+    mkdir -p "$K/koreader/patches"
+    if [ -d "$PT/fonts/source" ] && [ -f "$PT/resources/2-font-override.lua" ]; then
+        mkdir -p "$K/koreader/fonts/source"
+        cp "$PT"/fonts/source/*.ttf "$K/koreader/fonts/source/"
+        cp "$PT/resources/2-font-override.lua" "$K/koreader/patches/"
+        ok "Project: Title menu font"
+    fi
+    cp "$SRC/assets/koreader/patches/2-kindle-kit-setup.lua" "$K/koreader/patches/"
+    ok "Setup queued for the next KOReader start"
+    SETUP=1
+fi
+
+# --- book inbox (optional): books sent from your phone
+step "Book inbox (optional)"
+info "Send a book title from your phone and it downloads to Library/Inbox."
+info "Needs your own copy of github.com/1mposer/kindle-inbox (Use this template)."
+if ask "Set it up now?"; then
+    read -r -p "  Feed URL (https://<you>.github.io/<repo>/manifest.json): " FEED </dev/tty
+    if [[ "$FEED" =~ ^https://[^[:space:]]+/manifest\.json$ ]]; then
+        fetch "https://github.com/1mposer/kindle-inbox/archive/refs/heads/main.tar.gz" "$WORK/inbox.tgz"
+        tar xzf "$WORK/inbox.tgz" -C "$WORK"
+        rm -rf "$K/koreader/plugins/inboxsync.koplugin"
+        cp -R "$WORK/kindle-inbox-main/inboxsync.koplugin" "$K/koreader/plugins/"
+        printf '%s\n' "$FEED" > "$K/koreader/plugins/inboxsync.koplugin/feed_url.txt"
+        mkdir -p "$K/documents/Library/Inbox"
+        ok "Inbox plugin installed"
+    else
+        warn "That does not look like a manifest.json URL. Skipped."
+    fi
+fi
+
 clean_mac_junk
 
 step "Done. Finish on the Kindle"
+if [ "$SETUP" = 1 ]; then
+cat <<'EOF'
+  1. Eject and unplug. Open KOReader. It opens on your Library.
+  2. Open a book. Font, spacing and the status bar are already set.
+  3. Dictionary:    long-press any word. Set order in Dictionary settings.
+  4. Warm light:    swipe up/down on the right edge. Brightness: left edge.
+
+  Updates stay blocked by the jailbreak. Do not update past firmware 5.19.5.
+EOF
+else
 cat <<'EOF'
   1. Eject and unplug. Open KOReader.
   2. Library view:  wrench > More tools > Plugin management
@@ -232,3 +289,4 @@ cat <<'EOF'
 
   Updates stay blocked by the jailbreak. Do not update past firmware 5.19.5.
 EOF
+fi

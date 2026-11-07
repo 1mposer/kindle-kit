@@ -8,6 +8,8 @@
 | [KOReader](https://github.com/koreader/koreader) | AGPL-3.0 |
 | [Project: Title](https://github.com/joshuacant/ProjectTitle) | AGPL-3.0 |
 | [Webster's 1913 StarDict](https://github.com/ahacop/websters-dict-1913-stardict) | public domain |
+| [Literata](https://github.com/googlefonts/literata) by TypeTogether | SIL OFL 1.1 |
+| [kindle-inbox](https://github.com/1mposer/kindle-inbox) (optional) | MIT |
 
 The storage-fill approach follows [Kindle-Filler-Disk](https://github.com/iiroak/Kindle-Filler-Disk) (MIT).
 
