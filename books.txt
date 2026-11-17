@@ -1,6 +1,6 @@
 # shelf | source | id | filename
 # source: se = standardebooks.org slug, pg = Project Gutenberg id, url = direct EPUB link
-# A cover in assets/covers/<pg id>.* replaces Gutenberg's generic one.
+# A cover in assets/covers/<filename stem>.(jpg|png) replaces or adds the book's cover.
 
 Philosophy & Strategy|se|marcus-aurelius/meditations/george-long|
 Philosophy & Strategy|se|seneca/dialogues/aubrey-stewart|
@@ -48,3 +48,29 @@ Classic Fiction|se|herman-melville/moby-dick|
 
 Science & Economics|se|charles-darwin/the-origin-of-species|
 Science & Economics|se|adam-smith/the-wealth-of-nations|
+
+Sport & Health|pg|56584|benson_daily-training.epub
+Sport & Health|pg|36557|blaikie_how-to-get-strong.epub
+Sport & Health|pg|13574|camp_keeping-fit-all-the-way.epub
+Sport & Health|pg|69439|chittenden_physiological-economy-in-nutrition.epub
+Sport & Health|pg|68830|chittenden_the-nutrition-of-man.epub
+Sport & Health|url|https://openlibrary-repo.ecampusontario.ca/jspui/bitstream/123456789/2585/2/Athletic-Therapy-Skills-Support-Techniques-1776956222.epub|elliott_athletic-therapy-skills.epub
+Sport & Health|pg|19598|fisher_how-to-live.epub
+Sport & Health|url|https://archive.org/download/the-way-to-live/The%20Way%20to%20Live.epub|hackenschmidt_the-way-to-live.epub
+Sport & Health|pg|56398|james_practical-training.epub
+Sport & Health|pg|67114|jensen_massage-and-exercises-combined.epub
+Sport & Health|url|https://archive.org/download/33631000R.nlm.nih.gov/33631000R.epub|kellogg_the-art-of-massage.epub
+Sport & Health|url|https://archive.org/download/secrets-of-strength_202505/Secrets%20of%20Strength.epub|liederman_secrets-of-strength.epub
+Sport & Health|url|https://archive.org/download/MuscularPowerAndBeauty/Muscular%20power%20and%20beauty%20-%201906.epub|macfadden_muscular-power-and-beauty.epub
+Sport & Health|pg|19208|macfadden_vitality-supreme.epub
+Sport & Health|url|https://archive.org/download/b28130121/b28130121.epub|muller_my-system.epub
+Sport & Health|pg|15069|peters_diet-and-health.epub
+Sport & Health|pg|58821|roosevelt_the-strenuous-life.epub
+Sport & Health|url|https://archive.org/download/sandowgetsphysicl00sanduoft/sandowgetsphysicl00sanduoft.epub|sandow_sandow-on-physical-training.epub
+Sport & Health|pg|65987|sandow_strength-and-how-to-obtain-it.epub
+Sport & Health|url|https://archive.org/download/the-development-of-physical-power-saxon-arthur-1931/The%20Development%20of%20Physical%20Power%20Saxon%20Arthur%201931.epub|saxon_development-of-physical-power.epub
+Sport & Health|url|https://archive.org/download/b28063673/b28063673.epub|saxon_text-book-of-weight-lifting.epub
+Sport & Health|url|https://openlibrary-repo.ecampusontario.ca/jspui/bitstream/123456789/2394/3/The-Art-amp-Science-of-Personal-Wellness-1745514347.epub|stephen_art-and-science-of-personal-wellness.epub
+Sport & Health|url|https://pressbooks.oer.hawaii.edu/humannutrition2e22/open/download?type=epub|uh-manoa_human-nutrition-2e.epub
+Sport & Health|url|https://openlibrary-repo.ecampusontario.ca/jspui/bitstream/123456789/2706/1/OER-202605_Ulici_2026-Human-Anatomy-and-Physiology.epub|ulici_human-anatomy-and-physiology.epub
+Sport & Health|url|https://openlibrary-repo.ecampusontario.ca/jspui/bitstream/123456789/576/1/Human-Anatomy-Lab-Manual-1554838840.epub|wilk-blaszczak_human-anatomy-lab-manual.epub

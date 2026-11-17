@@ -43,15 +43,16 @@ It works out which stage your Kindle is at.
 
 | Stage | On your computer | On the Kindle |
 |---|---|---|
-| **1. Prep** | Copies the SpiderCat jailbreak book, fills storage to block updates | Open the book, wait for reboot, `;kpm install koreader` |
-| **2. Setup** | Removes filler and pending updates, installs everything below | Open KOReader (or tap through the steps below) |
+| **1. Prep** | Copies the SpiderCat jailbreak book, fills storage to block updates | Open the book, wait for reboot, plug back in |
+| **2. Free space** | Removes filler and pending updates | `;kpm update`, `;kpm install koreader`, plug back in |
+| **3. Setup** | Installs everything below | Open KOReader (or tap through the steps below) |
 
-**Installed in stage 2**
+**Installed in stage 3**
 
 - **Project: Title** - a cover-based library for KOReader, version-matched automatically
 - **Webster's 1913** - 160,000-word unabridged dictionary, long-press any word
 - **12 sleep screens** - Durer, Dore, Hiroshige, Haeckel and more, e-ink ready
-- **41 free books** on six shelves, with proper covers
+- **66 free books** on seven shelves, every one with a proper cover
 - **Reading setup** (optional) - Literata font, library as home screen, sleep screens on, chapter-only e-ink flashes
 - **Book inbox** (optional) - type a title on your phone, the free EPUB lands on the Kindle ([kindle-inbox](https://github.com/1mposer/kindle-inbox))
 
@@ -63,6 +64,8 @@ documents/Library/
   Software & Coding         SICP, Pro Git, Eloquent JavaScript, Hacker Crackdown
   Classic Fiction           Dostoevsky, Tolstoy, Kafka, Homer, Melville ...
   Science & Economics       The Origin of Species, The Wealth of Nations
+  Sport & Health            Sandow, Hackenschmidt, Saxon, Macfadden, Müller, open
+                            anatomy, physiology, nutrition and athletic-therapy texts
 ```
 
 Every book is public domain or freely licensed and is downloaded from its

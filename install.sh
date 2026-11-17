@@ -108,9 +108,11 @@ if [ ! -f "$K/documents/JAILBROKEN.txt" ] && [ ! -d "$K/libkh" ]; then
   1. Eject and unplug the Kindle. Keep Wi-Fi ON.
   2. Open "spidercat" from your Library. Ignore any error popups.
   3. Wait. Text scrolls, then it says "Restarting Kindle" and reboots.
-  4. After the reboot, type in the search bar:   ;kpm update
+  4. After the reboot, plug the Kindle back in and run this script again.
+     It frees the storage (KOReader needs the space to install).
+  5. Unplug, then type in the search bar:         ;kpm update
      then:                                        ;kpm install koreader
-  5. Plug the Kindle back in and run this script again.
+  6. Plug the Kindle back in and run this script once more.
 
   Stuck? https://kindlemodding.org/jailbreaking/SpiderCat/
 EOF
@@ -130,7 +132,8 @@ rm -rf "$K/documents/spidercat.azw3" "$K/documents/spidercat.sdr"
 if [ ! -d "$K/koreader" ]; then
     cat <<'EOF'
 
-  KOReader is not installed yet. On the Kindle (Wi-Fi on), type in the search bar:
+  Storage is free again. KOReader is not installed yet.
+  Eject, unplug, and on the Kindle (Wi-Fi on) type in the search bar:
       ;kpm update
       ;kpm install koreader
   Then plug back in and run this script again.
@@ -193,23 +196,26 @@ step "Free library"
 added=0; skipped=0; failed=0
 while IFS='|' read -r shelf src id name; do
     case "$shelf" in ''|\#*) continue ;; esac
+    alt=""
     if [ "$src" = "se" ]; then
         name="$(echo "$id" | tr '/' '_').epub"
         url="https://standardebooks.org/ebooks/$id/downloads/$name?source=download"
     elif [ "$src" = "pg" ]; then
         url="https://www.gutenberg.org/ebooks/$id.epub3.images"
+        alt="https://gutenberg.pglaf.org/cache/epub/$id/pg$id-images-3.epub"   # official mirror
     else
         url="$id"
     fi
     dest="$K/documents/Library/$shelf/$name"
     if [ -s "$dest" ]; then skipped=$((skipped + 1)); continue; fi
     mkdir -p "$K/documents/Library/$shelf"
-    if fetch "$url" "$WORK/book.epub" && [ "$(head -c 2 "$WORK/book.epub")" = "PK" ]; then
-        if [ "$src" = "pg" ]; then
-            for c in "$SRC/assets/covers/$id".*; do
-                [ -f "$c" ] && python3 -I "$SRC/tools/inject_cover.py" "$WORK/book.epub" "$c" 2>/dev/null || true
-            done
-        fi
+    rm -f "$WORK/book.epub"
+    fetch "$url" "$WORK/book.epub" || { [ -n "$alt" ] && fetch "$alt" "$WORK/book.epub"; } || true
+    if [ -s "$WORK/book.epub" ] && [ "$(head -c 2 "$WORK/book.epub")" = "PK" ]; then
+        # a cover in assets/covers/<filename stem>.(jpg|png) replaces or adds the book's cover
+        for c in "$SRC/assets/covers/${name%.epub}".*; do
+            [ -f "$c" ] && python3 -I "$SRC/tools/inject_cover.py" "$WORK/book.epub" "$c" 2>/dev/null || true
+        done
         cp "$WORK/book.epub" "$dest"
         added=$((added + 1)); printf '\r  %d books added   ' "$added"
     else
